@@ -25,13 +25,16 @@ namespace SafeAppDemo.DataStore
                 new Product(ProductCount, "Bogner", "Uberschall", 2200.00d, 1),
                 new Product(ProductCount, "Diezel", "Herbert", 3500.00d, 3),
                 new Product(ProductCount, "Alienware", "17 R5", 999.00, 2),
-                new Product(ProductCount, "Tesla", "Model 3", 37000.00, 1)
+                new Product(ProductCount, "Tesla", "Model 3", 37000.00, 1),
+                new Product(ProductCount, "McDonald's", "Double Quarter", 5.00d, 25),
             };
             WatchListEntries = new List<WatchListEntry>
             {
                 new WatchListEntry(WatchListEntryCount, "ESP", "LTD Horizon Evertune"),
                 new WatchListEntry(WatchListEntryCount, "Tesla", "Model S"),
-                new WatchListEntry(WatchListEntryCount, "EVH", "212 Combo")
+                new WatchListEntry(WatchListEntryCount, "EVH", "212 Combo"),
+                new WatchListEntry(WatchListEntryCount, "Diezel", "VH4"),
+                new WatchListEntry(WatchListEntryCount, "Wendy's", "Double Quarter"),
             };
         }
 

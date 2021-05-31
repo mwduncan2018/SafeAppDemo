@@ -93,7 +93,7 @@ namespace SafeAppDemo.Controllers
         // GET: WatchListController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Table.WatchListEntries.FirstOrDefault(x => x.Id == id));
         }
 
         // POST: WatchListController/Delete/5

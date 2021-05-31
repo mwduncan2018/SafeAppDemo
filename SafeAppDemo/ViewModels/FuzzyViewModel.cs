@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeAppDemo.ViewModels
 {
-    public class ProductViewModel
+    public class FuzzyViewModel
     {
         public int Id { get; set; }
         public string Manufacturer { get; set; }
@@ -16,5 +16,7 @@ namespace SafeAppDemo.ViewModels
         public int NumberInStock { get; set; }
         [Display(Name = "Match?")]
         public bool IsOnWatchList { get; set; }
+        [Display(Name = "Fuzzy Match?")]
+        public bool IsFuzzyMatch { get; set; }
     }
 }

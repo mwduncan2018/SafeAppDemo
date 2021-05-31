@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SafeAppDemo.ViewModels.FuzzyViewModel>
+
+@{
+    ViewData["Title"] = "Fuzzy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product List</h1>
+
+<p>
+    <a class="btn btn-info float-right" asp-action="Create">Add New Product</a>
+    <a class="btn btn-danger float-right" asp-action="Index">Disable Fuzzy Matching!</a>
+</p>
+<br /><span>&nbsp;</span>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOnWatchList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFuzzyMatch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberInStock)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var highlight = "";
+            if (item.IsFuzzyMatch == true)
+            {
+                highlight = "highlight-row-fuzzy";
+            } else if (item.IsOnWatchList == true)
+            {
+                highlight = "highlight-row-match";
+            }
+            <tr class="@highlight">
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsOnWatchList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFuzzyMatch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberInStock)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+        </tbody>
+</table>

@@ -33,6 +33,34 @@ namespace SafeAppDemo.Controllers
             return View(viewModelList.OrderBy(w => w.Manufacturer).ThenBy(x => x.Model).ThenBy(y => y.Price).ThenBy(z => z.Id).ToList());
         }
 
+        public ActionResult Fuzzy()
+        {
+            IList<FuzzyViewModel> viewModelList = new List<FuzzyViewModel>();
+            foreach (var product in Table.Products)
+            {
+                FuzzyViewModel fuzzyViewModel = new FuzzyViewModel
+                {
+                    Id = product.Id,
+                    Manufacturer = product.Manufacturer,
+                    Model = product.Model,
+                    NumberInStock = product.NumberInStock,
+                    Price = product.Price,
+                };
+                fuzzyViewModel.IsOnWatchList = Table.WatchListEntries
+                    .Where(e => e.Manufacturer == product.Manufacturer && e.Model == product.Model)
+                    .Count() != 0 ? true : false;
+                if (fuzzyViewModel.IsOnWatchList == false)
+                {
+                    // If either Manufacturer or Model is a match, fuzzy match is true
+                    fuzzyViewModel.IsFuzzyMatch = Table.WatchListEntries
+                        .Where(f => f.Manufacturer == product.Manufacturer || f.Model == product.Model)
+                        .Count() != 0 ? true : false;
+                }
+                viewModelList.Add(fuzzyViewModel);
+            }
+            return View(viewModelList.OrderBy(w => w.Manufacturer).ThenBy(x => x.Model).ThenBy(y => y.Price).ThenBy(z => z.Id).ToList());
+        }
+
         // GET: SampleController/Details/5
         public ActionResult Details(int id)
         {

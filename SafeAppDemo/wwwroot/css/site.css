@@ -1,5 +1,8 @@
-﻿.highlight-row {
+﻿.highlight-row-match {
     background-color: lightgreen;
+}
+.highlight-row-fuzzy {
+    background-color: lightpink;
 }
 
 
